@@ -1,3 +1,13 @@
 {
-  "extends": "rallycoding"
+  "extends": "rallycoding",
+   "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "src"
+        ]
+      }
+    }
+  }
 }

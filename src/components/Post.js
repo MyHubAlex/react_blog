@@ -1,37 +1,20 @@
 import React, { PropTypes } from 'react';
-import request from 'superagent';
-
+import _ from 'lodash';
 import { Item } from 'semantic-ui-react';
 import BlogItem from './widgets/Item';
-//import list from '../constants/static/items';
 
+const Post = (props) => {
+  console.log('post');
+  const item = props.item;
+  if (!item) return null;
 
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  const itemAp = _.assign({}, item, { incrementLike: props.incrementLike });
 
-  componentDidMount() {
-     this.fetchPost();
-  }
+  return (<Item.Group>
+            <BlogItem {...itemAp} />
+          </Item.Group>);
+};
 
- fetchPost() {
-   request.get(
-     `http://localhost:3001/${this.props.params.id}`,
-     {},
-     (err, res) => (this.setState({ item: res.body }))
-   );
- }
-  render() {
-    const { item } = this.state;
-    if (!item) return null;
-
-    return (<Item.Group>
-              <BlogItem {...item} />
-            </Item.Group>);
-    }
-  }
 
 Post.PropTypes = {
   params: PropTypes.object

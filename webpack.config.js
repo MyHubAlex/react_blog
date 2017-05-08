@@ -46,6 +46,9 @@ module.exports = {
     // enable HMR on the server
   },
 
+  resolve: {
+    root
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin()
