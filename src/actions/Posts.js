@@ -1,20 +1,5 @@
-import request from 'superagent';
-
-import { API_ROOT } from '../constants/API';
-import * as types from '../constants/actionTypes/PostsActionTypes';
-
-const requestPosts = () => ({
-  type: types.FETCH_POSTS_REQUEST
-});
-
-const receivePosts = (response) => ({
-  type: types.FETCH_POSTS_SUCCESS,
-  response
-});
-
-const errorPosts = () => ({
-  type: types.FETCH_POSTS_ERROR
-});
+import { API_CALL } from 'middleware/API';
+import * as types from 'constants/actionTypes/PostsActionTypes';
 
 export const incrementLike = (id) => ({
   type: types.INCREMENT_LIKE,
@@ -22,12 +7,31 @@ export const incrementLike = (id) => ({
 });
 
 export function fetchPosts() {
-  return (dispatch) => {
-    dispatch(requestPosts());
+  return {
+    [API_CALL]: {
+      endpoint: '/',
+      method: 'GET',
+      query: {},
+      types: [
+        types.FETCH_POSTS_REQUEST,
+        types.FETCH_POSTS_SUCCESS,
+        types.FETCH_POSTS_ERROR
+      ]
+    }
+  };
+}
 
-    return request.get(`${API_ROOT}/`).end(
-      (err, response) => {
-        err ? dispatch(errorPosts()) : dispatch(receivePosts(response.body));
-      });
+export function searchPosts(value) {
+  return {
+    [API_CALL]: {
+      endpoint: '/search',
+      method: 'GET',
+      query: { text: value },
+      types: [
+        types.FETCH_POSTS_REQUEST,
+        types.FETCH_POSTS_SUCCESS,
+        types.FETCH_POSTS_ERROR
+      ]
+    }
   };
 }

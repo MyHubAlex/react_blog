@@ -1,17 +1,16 @@
+import { Item } from 'semantic-ui-react';
 import React from 'react';
-import _ from 'lodash';
+import { map, assign } from 'lodash';
 import BlogItem from './Item';
 
 const BlogList = (props) => {
   const arr = props.arr;
-
-  return React.createElement(
-    'ul',
-    {},
-    _.map(arr, (item) => (
-        React.createElement(BlogItem, _.assign({ key: item.id, incrementLike: props.incrementLike },
-           item)))
-  ));
+  return (<Item>
+    {map(arr, (item) => {
+      const newItem = assign({}, item, { key: item.id, incrementLike: props.incrementLike });
+      return <BlogItem {...newItem} />;
+    })}
+  </Item>);
 };
 
 export default BlogList;

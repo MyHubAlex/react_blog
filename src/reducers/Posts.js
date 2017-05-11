@@ -10,7 +10,6 @@ const initialState = {
 
 const incrementLike = (entries, id) => (
     _.map(entries, (item) => {
-      console.log(entries);
       if (item.id === id) {
         item.likes += 1;
       }
