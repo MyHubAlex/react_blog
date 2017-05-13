@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import Helmet from 'react-helmet';
 
 import BlogList from './widgets/List';
 import PieChart from './widgets/PieChart';
@@ -16,6 +17,7 @@ const BlogPage = (props) => {
           arr
         }
     />
+    <Helmet title={'Список постов'} />
   </div>);
 };
 
