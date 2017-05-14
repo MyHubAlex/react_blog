@@ -5,7 +5,6 @@ import BlogItem from './widgets/Item';
 import Helmet from 'react-helmet';
 
 const Post = (props) => {
-  console.log('post');
   const item = props.item;
   if (!item) return null;
 
