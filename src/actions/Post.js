@@ -19,3 +19,18 @@ export function fetchPost(id) {
     }
   };
 }
+
+export function addPost(values) {
+  return {
+    [API_CALL]: {
+      endpoint: '/add',
+      method: 'POST',
+      payload: { post: values },
+      types: [
+        types.ADD_POST_REQUEST,
+        types.ADD_POST_SUCCESS,
+        types.ADD_POST_ERROR
+      ]
+    }
+  };
+}

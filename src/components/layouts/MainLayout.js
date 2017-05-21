@@ -26,6 +26,9 @@ const Logo = () => (
       <Menu.Item>
         <Link to={'/contacts'}>Contacts</Link>
       </Menu.Item>
+      <Menu.Item>
+        <Link to={'/add'}>Add Post</Link>
+      </Menu.Item>
     </Menu>
   </Segment>
 );

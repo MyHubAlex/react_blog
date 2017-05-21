@@ -1,6 +1,7 @@
 import React from 'react';
 import { set, mapValues, assign } from 'lodash';
 import classNames from 'classnames';
+import Text from 'components/elements/form/TextForm';
 
 class Contacts extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Contacts extends React.Component {
   }
 
   render() {
-    const { fullName, email } = this.state.form.values;
+    const { fullName, email, message } = this.state.form.values;
     return (
         <div>
           <h1>Contacts</h1>
@@ -49,6 +50,12 @@ class Contacts extends React.Component {
             onChange={this.handleChange('email')}
             label={'Email'}
           />
+          <TextArea
+            name={'message'}
+            value={message}
+            onChange={this.handleChange('message')}
+            label={'message'}
+          />
           <input className="ui button primary" type="submit" value="Submit" />
           </form>
         </div>
@@ -56,14 +63,13 @@ class Contacts extends React.Component {
   }
 }
 
-const Text = ({ name, value, onChange, label }) => {
+const TextArea = ({ name, value, onChange, label }) => {
   return (
     <div className="ui field">
     <label for={name}>{label}</label>
-    <input
+    <textArea
       id={name}
       className="ui input"
-      type="text"
       value={value}
       onChange={onChange}
     />

@@ -3,6 +3,7 @@ import { fetchPost } from 'actions/Post';
 
 import Contacts from 'components/views/Contacts';
 import EditPost from 'components/views/Edit';
+import AddPost from '../containers/AddPostContainer';
 import initialLoad from 'helpers/initialLoad';
 import BlogPage from '../containers/BlogPageContainer';
 import MainLayout from '../components/layouts/MainLayout';
@@ -39,7 +40,12 @@ const EditRouter = {
   }
 };
 
+const AddPostRouter = {
+  path: '/add',
+  component: AddPost
+};
+
 export default {
   components: MainLayout,
-  childRoutes: [Index, PostRoute, ContactsRoute, EditRouter]
+  childRoutes: [Index, PostRoute, ContactsRoute, EditRouter, AddPostRouter]
 };
